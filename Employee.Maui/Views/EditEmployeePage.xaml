@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Employee.Maui.Views.EditEmployeePage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="EditEmployeePage">
+
+    <VerticalStackLayout Spacing="10" Margin="20,10,0,0">
+        <HorizontalStackLayout>
+            <Label Text="Name" VerticalOptions="Center" WidthRequest="60"></Label>
+            <Entry x:Name="entryName"  VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                        x:Name="nameValidator"
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        MinimumLength="1"
+                        />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+
+
+        <HorizontalStackLayout>
+            <Label Text="Number" VerticalOptions="Center" WidthRequest="60"></Label>
+            <Entry x:Name="entryNumber" VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                        x:Name="NumberValidator"
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        MinimumLength="1"
+                        />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+
+
+        <HorizontalStackLayout>
+            <Label Text="Address" VerticalOptions="Center" WidthRequest="60"></Label>
+            <Entry x:Name="entryAddress" VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                        x:Name="AddressValidation"
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        MinimumLength="1"
+                        />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+
+
+        <Button x:Name="btnUpdate" Text="Update" Clicked="btnUpdate_Clicked"></Button>
+        <Button x:Name="btnMainMenu" Text="Main Menu" Clicked="btnMainMenu_Clicked"></Button>
+    </VerticalStackLayout>
+
+
+
+</ContentPage>

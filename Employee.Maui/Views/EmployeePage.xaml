@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Employee.Maui.Views.EmployeePage"
+             Title="Employee Page">
+
+
+    <ListView x:Name="listEmployees"
+              Margin="20,10,0,0"
+              BackgroundColor="Transparent"
+              RowHeight="50"
+              ItemSelected="listEmployees_ItemSelected"
+              ItemTapped="listEmployees_ItemTapped"
+              >
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}"></TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+   
+    
+</ContentPage>

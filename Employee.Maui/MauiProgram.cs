@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.Maui.ScreenBrightness;
 
 namespace Employee.Maui
 {
@@ -12,11 +13,17 @@ namespace Employee.Maui
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    //fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    //fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+
+                    fonts.AddFont("trebuc.ttf", "trebuc");
+                    fonts.AddFont("Trebuchet-MS-Italic.ttf", "Trebuchet-MS-Italic");
                 });
 
             builder.UseMauiApp<App>().UseMauiCommunityToolkit();
+
+            // Screen Brightness
+            //builder.Services.AddSingleton(ScreenBrightness.Default);
 
 #if DEBUG
             builder.Logging.AddDebug();

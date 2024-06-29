@@ -3,54 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Employee.Maui.Views.EditEmployeePage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="EditEmployeePage">
-
-    <VerticalStackLayout Spacing="10" Margin="20,10,0,0">
-        <HorizontalStackLayout>
-            <Label Text="Name" VerticalOptions="Center" WidthRequest="60"></Label>
-            <Entry x:Name="entryName"  VerticalOptions="Center">
-                <Entry.Behaviors>
-                    <toolkit:TextValidationBehavior 
-                        x:Name="nameValidator"
-                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                        MinimumLength="1"
-                        />
-                </Entry.Behaviors>
-            </Entry>
-        </HorizontalStackLayout>
+             xmlns:controls="clr-namespace:Employee.Maui.Views.Controls"
+             Title="View/Edit Staff Profiles">
 
 
-        <HorizontalStackLayout>
-            <Label Text="Number" VerticalOptions="Center" WidthRequest="60"></Label>
-            <Entry x:Name="entryNumber" VerticalOptions="Center">
-                <Entry.Behaviors>
-                    <toolkit:TextValidationBehavior 
-                        x:Name="NumberValidator"
-                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                        MinimumLength="1"
-                        />
-                </Entry.Behaviors>
-            </Entry>
-        </HorizontalStackLayout>
 
 
-        <HorizontalStackLayout>
-            <Label Text="Address" VerticalOptions="Center" WidthRequest="60"></Label>
-            <Entry x:Name="entryAddress" VerticalOptions="Center">
-                <Entry.Behaviors>
-                    <toolkit:TextValidationBehavior 
-                        x:Name="AddressValidation"
-                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                        MinimumLength="1"
-                        />
-                </Entry.Behaviors>
-            </Entry>
-        </HorizontalStackLayout>
+    <Grid>
+        <!-- Re usable control to create methods for saved, main menu and error application -->
+        <controls:EmployeeControl x:Name="employeeCtrl"
+                              EmployeeSaved="btnUpdate_Clicked"
+                              EmployeeMainMenu="btnMainMenu_Clicked"
+                              EmployeeError="employeeCtrl_EmployeeError"></controls:EmployeeControl>
 
 
-        <Button x:Name="btnUpdate" Text="Update" Clicked="btnUpdate_Clicked"></Button>
-        <Button x:Name="btnMainMenu" Text="Main Menu" Clicked="btnMainMenu_Clicked"></Button>
-    </VerticalStackLayout>
+        <!-- Image used to insert ROI logo -->
+        <Image 
+            
+            Grid.Row="1"
+            Grid.Column="0"
+            Source="roi.JPG" 
+            Aspect="AspectFit"
+            HeightRequest="150"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            />
+
+        <!-- Image used as a logo template -->
+        <Image 
+            Grid.Row="1"
+            Grid.Column="1"
+            Source="image_edit_gone.png" 
+            Aspect="AspectFit"
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Opacity="0.7"
+            />
+
+        <!-- Text used for Gelos Enterprises -->
+        <Label 
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Gelos Enterprises &#xA9;"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
+            FontSize="20"
+            TextColor="#3b3b3b"
+            FontAttributes="Bold"
+            />
+
+    </Grid>
 
 
 

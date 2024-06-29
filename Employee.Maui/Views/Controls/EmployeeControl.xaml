@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Employee.Maui.Views.Controls.EmployeeControl">
+    
+    
+    <!-- This page is used as a template for the main menu-->
+    <VerticalStackLayout Spacing="10" Margin="20,10,0,0">
+        <HorizontalStackLayout>
+            <Label Text="Name" VerticalOptions="Center" WidthRequest="60"></Label>
+            <Entry x:Name="entryName"  VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                    x:Name="nameValidator"
+                    Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                    MinimumLength="1"
+                    />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+
+
+        <HorizontalStackLayout>
+            <Label Text="Number" VerticalOptions="Center" WidthRequest="60"></Label>
+            <Entry x:Name="entryNumber" VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                    x:Name="NumberValidator"
+                    Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                    MinimumLength="1"
+                    />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+
+
+        <HorizontalStackLayout>
+            <Label Text="Address" VerticalOptions="Center" WidthRequest="60"></Label>
+            <Entry x:Name="entryAddress" VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                    x:Name="AddressValidation"
+                    Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                    MinimumLength="1"
+                    />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+
+
+        <!-- Save and main menu button -->
+        <Button x:Name="btnSave" Text="Update" TextColor="#3b3b3b" FontAttributes="Bold" FontSize="15" BackgroundColor="#cb6d4f" Clicked="btnSave_Clicked"></Button>
+        <Button x:Name="btnMainMenu" Text="Main Menu" TextColor="#3b3b3b" FontAttributes="Bold" FontSize="15" BackgroundColor="#cb6d4f" Clicked="btnMainMenu_Clicked"></Button>
+    </VerticalStackLayout>
+</ContentView>

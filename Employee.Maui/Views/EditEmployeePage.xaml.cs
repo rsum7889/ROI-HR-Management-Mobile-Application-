@@ -5,18 +5,22 @@ using Employees = Employee.Maui.Models.Employees;
 
 namespace Employee.Maui.Views;
 
-
+// This page accepts an 'Id' query property
 [QueryProperty(nameof(EmployeeId),"Id")]
 public partial class EditEmployeePage : ContentPage
 {
 	private Employees employees;
+
 	public EditEmployeePage()
 	{
-		InitializeComponent();
+        // UI components are initialized
+        InitializeComponent();
 	}
 
+	// Method used when used clicks on the main menu button
 	private void btnMainMenu_Clicked(object sender, EventArgs e)
 	{
+		// ".." means the user will be directed to the previous page
 		Shell.Current.GoToAsync("..");
 	}
 
@@ -27,41 +31,36 @@ public partial class EditEmployeePage : ContentPage
 			employees = EmployeeRepository.GetEmployeesById(int.Parse(value));
 			if (employees != null)
 			{
-                entryName.Text = employees.Name;
-				entryNumber.Text = employees.Number;
-				entryAddress.Text = employees.Address;
+				// Employee details
+                employeeCtrl.Name = employees.Name;
+				employeeCtrl.Number = employees.Number;
+				employeeCtrl.Address = employees.Address;
 
             }
 			
 		}
 	}
 
+	// Method to update employee details 
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
 
-		if (nameValidator.IsNotValid)
-		{
-			DisplayAlert("Error", "Name Required", "Ok");
-			return;
-		}
+		employees.Name = employeeCtrl.Name;
+		employees.Number = employeeCtrl.Number;
+		employees.Address = employeeCtrl.Address;
 
-		if (NumberValidator.IsNotValid) 
-		{
-			DisplayAlert("Error", "Number Required", "Ok");
-			return;
-		}
-
-		if (AddressValidation.IsNotValid)
-		{
-			DisplayAlert("Error", "Address Required", "Ok");
-			return;
-		}
-
-        employees.Name = entryName.Text;
-		employees.Number = entryNumber.Text;
-		employees.Address = entryAddress.Text;
-
+		// Update employees in the repository
         EmployeeRepository.UpdateEmployees(employees.EmployeeId, employees);
+
+		// Go back to the previous page
         Shell.Current.GoToAsync("..");
+    }
+
+	// When a user updates a profile without entering all details, the following
+	// method is called. 
+    private void employeeCtrl_EmployeeError(object sender, string e)
+    {
+		// Error message display
+		DisplayAlert("Error", e,"Ok");
     }
 }

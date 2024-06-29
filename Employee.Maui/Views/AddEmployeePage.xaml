@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Employee.Maui.Views.Controls"
              x:Class="Employee.Maui.Views.AddEmployeePage"
              Title="AddEmployeePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
-        <Button x:Name="btnMainMenu" Text="Main Menu" Clicked="btnMainMenu_Clicked"></Button>
-        
-        
-    </VerticalStackLayout>
+
+
+    <Grid>
+        <!-- Re usable control to create methods for saved, main menu and error application -->
+        <controls:EmployeeControl x:Name="employeeCtrl"
+                              EmployeeSaved="employeeCtrl_EmployeeSaved_1"
+                              EmployeeMainMenu="employeeCtrl_EmployeeMainMenu"
+                              EmployeeError="employeeCtrl_EmployeeError"></controls:EmployeeControl>
+
+
+        <!-- Image used to insert ROI logo -->
+        <Image 
+            Grid.Row="0"
+            Grid.Column="1"
+            Source="roi.JPG" 
+            Aspect="AspectFit"
+            HeightRequest="150"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            />
+
+
+        <Image 
+            Grid.Row="1"
+            Grid.Column="1"
+            Source="backgroundgone.png" 
+            Aspect="AspectFit"
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Opacity="0.7"
+            />
+
+        <Label 
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="Gelos Enterprises &#xA9;"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
+            FontSize="20"
+            TextColor="#3b3b3b"
+            FontAttributes="Bold"
+            />
+    </Grid>
+
+
+
 </ContentPage>

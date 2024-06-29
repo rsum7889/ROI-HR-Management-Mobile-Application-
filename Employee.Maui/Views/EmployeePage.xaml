@@ -2,24 +2,98 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Employee.Maui.Views.EmployeePage"
-             Title="Employee Page">
+             Title="Staff Profiles"
+             BackgroundColor="#cb6d4f">
 
+    <!-- This is the xaml file for the Red Opal Innovations (ROI) homepage  -->
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto"
+          ColumnDefinitions="*,Auto,*">
 
-    <ListView x:Name="listEmployees"
-              Margin="20,10,0,0"
+        <!-- ROI image -->
+        <Image 
+            Grid.Row="0"
+            Grid.Column="1"
+            Source="roi.JPG" 
+            Aspect="AspectFit"
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            />
+
+        <!-- Company title placed on the left side of the ROI image -->
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Red Opal Innovations"
+            VerticalOptions="Center"
+            HorizontalOptions="End"
+            Margin="0,0,60,0"
+            FontSize="20"
+            TextColor="#3b3b3b"
+            FontAttributes="Bold"
+            />
+
+         <!-- Gelos Enterprises title placed right side of logo -->
+        <Label 
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="Gelos Enterprises &#xA9;"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            Margin="60,0,0,0"
+            FontSize="20"
+            TextColor="#3b3b3b"
+            FontAttributes="Bold"
+            />
+
+        <!-- ListView used to create a template for ROI employee list -->
+        <ListView 
+              Grid.Row="2"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              x:Name="listEmployees"
+              Margin="20,10,20,0"
               BackgroundColor="Transparent"
               RowHeight="50"
               ItemSelected="listEmployees_ItemSelected"
-              ItemTapped="listEmployees_ItemTapped"
-              >
+              ItemTapped="listEmployees_ItemTapped">
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}"></TextCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    
-   
-    
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}">
+                        <TextCell.ContextActions>
+                            <MenuItem 
+                                Text="Delete"
+                                Clicked="MenuItem_Clicked"
+                                CommandParameter="{Binding .}"></MenuItem>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Brightness Slider added for used to adjust brightness of screen-->
+        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Vertical" Margin="20,10,20,0">
+            <Label x:Name="labelBrightness" Text="Brightness" />
+            <Slider x:Name="sliderBrightness" ValueChanged="sliderBrightness_ValueChanged" Maximum="100"/>
+        </StackLayout>
+
+        <!-- Employee Button added so user can add additional ROI employees -->
+        <Button 
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            x:Name="btnAdd" 
+            Text="Add Employee" 
+            TextColor="#3b3b3b"
+            FontAttributes="Bold"
+            BackgroundColor="#D9D9D9"
+            FontSize="15"
+            Clicked="btnAdd_Clicked"
+            Margin="20,0,20,10"
+            VerticalOptions="End">
+        </Button>
+
+    </Grid>
+
 </ContentPage>

@@ -1,25 +1,21 @@
-﻿namespace Employee.Maui
+﻿//using Plugin.Maui.ScreenBrightness;
+
+namespace Employee.Maui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+       
         public MainPage()
         {
             InitializeComponent();
+            //sliderBrightness.Value = ScreenBrightness.Default.Brightness;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        //private void sliderBrightness_ValueChanged(object sender, ValueChangedEventArgs e)
+        //{
+        //    ScreenBrightness.Default.Brightness = (float) e.NewValue;
+        //    labelBrightness.Text = ScreenBrightness.Default.Brightness.ToString();
+        //}
     }
 
 }
